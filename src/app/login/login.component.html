@@ -1,42 +1,50 @@
-<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
-<br>
-<br>
-<div class="container">
-    <div class="row justify-content-center">
-      <div class="col-md-8">
-        <div class="card-group mb-0">
-          <div class="card p-4">
-            <div class="card-body">
-              <h1>Login</h1>
-              <p class="text-muted">Sign In to your account</p>
-              <div class="input-group mb-3">
-                <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                <input type="text" class="form-control" placeholder="Username">
-              </div>
-              <div class="input-group mb-4">
-                <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                <input type="password" class="form-control" placeholder="Password">
-              </div>
-              <div class="row">
-                <div class="col-6">
-                  <button type="button" class="btn btn-primary px-4">Login</button>
-                </div>
-                <div class="col-6 text-right">
-                  <button type="button" class="btn btn-link px-0">Forgot password?</button>
-                </div>
-              </div>
+
+<div class="container h-100">
+  <div class="row h-100">
+  <div class="col-sm-10 col-md-8 col-lg-6 mx-auto d-table h-100">
+    <div class="d-table-cell align-middle">
+
+      <div class="text-center mt-4">
+        <h1 class="h2">Welcome back, Dey</h1>
+        <p class="lead">
+          Sign in to your account to continue
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="card-body">
+          <div class="m-sm-4">
+            <div class="text-center">
+              <img src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="Andrew Jones" class="img-fluid rounded-circle" width="132" height="132">
             </div>
-          </div>
-          <div class="card text-white bg-primary py-5 d-md-down-none" style="width:44%">
-            <div class="card-body text-center">
+            <form>
+              <div class="form-group">
+                <label>Email</label>
+                <input class="form-control form-control-lg" type="email" name="email" placeholder="Enter your email">
+              </div>
+              <div class="form-group">
+                <label>Password</label>
+                <input class="form-control form-control-lg" type="password" name="password" placeholder="Enter your password">
+                <small>
+      <a href="pages-reset-password.html">Forgot password?</a>
+    </small>
+              </div>
               <div>
-                <h2>Sign up</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                <button type="button" class="btn btn-primary active mt-3">Register Now!</button>
+                <div class="custom-control custom-checkbox align-items-center">
+                  <input type="checkbox" class="custom-control-input" value="remember-me" name="remember-me" checked="">
+                  <label class="custom-control-label text-small">Remember me next time</label>
+                </div>
               </div>
-            </div>
+              <div class="text-center mt-3">
+                <a href="index.html" class="btn btn-lg btn-primary">Sign in</a>
+                <!-- <button type="submit" class="btn btn-lg btn-primary">Sign in</button> -->
+              </div>
+            </form>
           </div>
         </div>
       </div>
+
     </div>
   </div>
+</div>
+</div>
