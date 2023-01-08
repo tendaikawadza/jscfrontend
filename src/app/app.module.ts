@@ -11,6 +11,9 @@ import { NotificationService } from './service/notification.service';
 import { FormsModule, ReactiveFormsModule , FormGroup} from '@angular/forms'
 
 import { RouterModule } from '@angular/router';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+import { UserComponent } from './user/user.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +34,7 @@ import { RouterModule } from '@angular/router';
 
   ],
   providers: [NotificationService, AuthenticationGuard,  AuthenticatorResponse,UserService,
-    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }  ],
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

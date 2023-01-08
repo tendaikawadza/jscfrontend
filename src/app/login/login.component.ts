@@ -15,7 +15,7 @@ import { NotificationService } from "../service/notification.service";
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit ,OnDestroy{
+export class LoginComponent implements OnInit, OnDestroy {
   showLoading: boolean | undefined;
   private subscriptions: Subscription[] = [];
   Observable: any;
@@ -23,69 +23,45 @@ export class LoginComponent implements OnInit ,OnDestroy{
 
 
 
-  constructor(private router:Router,private authenticationService:AuthenticationService ,
-    private notificationService:NotificationService) { }
-  
- 
+  constructor(private router: Router, private authenticationService: AuthenticationService,
+    private notificationService: NotificationService) { }
+
+
 
   ngOnInit(): void {
-    if(this.authenticationService.isUserLoggedIn()){
+    if (this.authenticationService.isUserLoggedIn()) {
       if (this.authenticationService.isUserLoggedIn()) {
         this.router.navigateByUrl('/user/management');
       } else {
         this.router.navigateByUrl('/login');
       }
     }
-   
   }
-
-
- 
   public onLogin(user: User): void {
     this.showLoading = true;
+    console.log(user);
     this.subscriptions.push(
-      this.authenticationService.login(user).subscribe(
-        
-        (response: HttpResponse<User> |HttpErrorResponse ) => {
-          const token = response.headers.get('JWT_TOKEN');
-          this.authenticationService.saveToken(token);
-        //  this.authenticationService.addUserToLocalCache(response.body);
-          this.router.navigateByUrl('/user/management');
-          this.showLoading = false;
-        },
-        (errorResponse: HttpErrorResponse) => {
-          this.sendErrorNotification(NotificationType.ERROR, errorResponse.error.message);
-          this.showLoading = false;
-        }
-      )
-    );
+      this.authenticationService.login(user).subscribe((response) => {
+        const token = response.headers.get('Jwt_Token');
+        this.authenticationService.saveToken(token);
+        this.authenticationService.addUserToLocalCache(response.body);
+        this.router.navigateByUrl('/user');
+      }))
+
   }
- 
- 
 
-
-
-
-private sendErrorNotification(notificationType: NotificationType, message: string): void {
-  if (message) {
-    this.notificationService.notify(notificationType, message);
-  } else {
-    this.notificationService.notify(notificationType, 'An error occurred. Please try again.');
+  private sendErrorNotification(notificationType: NotificationType, message: string): void {
+    if (message) {
+      this.notificationService.notify(notificationType, message);
+    } else {
+      this.notificationService.notify(notificationType, 'An error occurred. Please try again.');
+    }
   }
-}
 
-  
-
-ngOnDestroy(): void {
-  this.subscriptions.forEach(sub => sub.unsubscribe());
-}
+  ngOnDestroy(): void {
+    this.subscriptions.forEach(sub => sub.unsubscribe());
+  }
 
 }
 
-
-
-
-function Observer(_arg0: number) {
-  throw new Error("Function not implemented.");
-}
 

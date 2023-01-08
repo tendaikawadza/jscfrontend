@@ -21,6 +21,7 @@
     "@auth0/angular-jwt": "^5.1.0",
     "angular-notifier": "^12.0.0",
     "angular-notify": "^1.2.0",
+    "bootstrap": "^5.2.3",
     "node-css": "^0.1.0",
     "notify-angular": "^3.0.1",
     "rxjs": "~7.5.0",
