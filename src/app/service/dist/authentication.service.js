@@ -21,7 +21,7 @@ var AuthenticationService = /** @class */ (function () {
     AuthenticationService.prototype.register = function (user) {
         return this.http.post(this.host + "/user/register", user);
     };
-    AuthenticationService.prototype.logout = function () {
+    AuthenticationService.prototype.logOut = function () {
         this.token = null;
         this.loggedInUsername != null;
         localStorage.removeItem('user');
@@ -56,7 +56,7 @@ var AuthenticationService = /** @class */ (function () {
             }
         }
         else {
-            this.logout();
+            this.logOut();
         }
         return false;
     };

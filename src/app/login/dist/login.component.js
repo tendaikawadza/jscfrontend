@@ -7,6 +7,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 exports.__esModule = true;
 var core_1 = require("@angular/core");
+var header_type_enum_1 = require("../enum/header-type.enum");
+var notificaton_type_enum_1 = require("../enum/notificaton-type.enum");
 var LoginComponent = /** @class */ (function () {
     function LoginComponent(router, authenticationService, notificationService) {
         this.router = router;
@@ -16,23 +18,29 @@ var LoginComponent = /** @class */ (function () {
     }
     LoginComponent.prototype.ngOnInit = function () {
         if (this.authenticationService.isUserLoggedIn()) {
-            if (this.authenticationService.isUserLoggedIn()) {
-                this.router.navigateByUrl('/user/management');
-            }
-            else {
-                this.router.navigateByUrl('/login');
-            }
+            this.router.navigateByUrl('user/management');
+        }
+        else {
+            this.router.navigateByUrl("login");
         }
     };
     LoginComponent.prototype.onLogin = function (user) {
         var _this = this;
         this.showLoading = true;
         console.log(user);
-        this.subscriptions.push(this.authenticationService.login(user).subscribe(function (response) {
-            var token = response.headers.get('Jwt_Token');
-            _this.authenticationService.saveToken(token);
-            _this.authenticationService.addUserToLocalCache(response.body);
-            _this.router.navigateByUrl('/user');
+        this.subscriptions.push(this.authenticationService.login(user).subscribe({
+            next: function (Response) {
+                var token = Response.headers.get(header_type_enum_1.HeaderType.JWT_TOKEN);
+                _this.authenticationService.saveToken(token);
+                _this.authenticationService.addUserToLocalCache(Response.body);
+                _this.router.navigateByUrl('user/managemnt');
+                _this.showLoading = false;
+            },
+            error: function (errorREponse) {
+                console.log(errorREponse);
+                _this.sendErrorNotification(notificaton_type_enum_1.NotificationType.ERROR, errorREponse.message);
+                _this.showLoading = false;
+            }
         }));
     };
     LoginComponent.prototype.sendErrorNotification = function (notificationType, message) {
@@ -40,7 +48,7 @@ var LoginComponent = /** @class */ (function () {
             this.notificationService.notify(notificationType, message);
         }
         else {
-            this.notificationService.notify(notificationType, 'An error occurred. Please try again.');
+            this.notificationService.notify(notificationType, 'An error occured,please try again');
         }
     };
     LoginComponent.prototype.ngOnDestroy = function () {
