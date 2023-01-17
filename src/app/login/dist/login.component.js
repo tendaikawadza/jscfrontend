@@ -18,7 +18,7 @@ var LoginComponent = /** @class */ (function () {
     }
     LoginComponent.prototype.ngOnInit = function () {
         if (this.authenticationService.isUserLoggedIn()) {
-            this.router.navigateByUrl('user/management');
+            this.router.navigateByUrl('user');
         }
         else {
             this.router.navigateByUrl("login");
@@ -33,7 +33,7 @@ var LoginComponent = /** @class */ (function () {
                 var token = Response.headers.get(header_type_enum_1.HeaderType.JWT_TOKEN);
                 _this.authenticationService.saveToken(token);
                 _this.authenticationService.addUserToLocalCache(Response.body);
-                _this.router.navigateByUrl('user/managemnt');
+                _this.router.navigateByUrl('user/management');
                 _this.showLoading = false;
             },
             error: function (errorREponse) {

@@ -1,13 +1,7 @@
 
-/* You can add global styles to this file, and also import other style files */
-
-
-@import "https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" ;
+@import 'https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css';
 @import 'https://use.fontawesome.com/releases/v5.8.1/css/all.css';
-
 @import "~angular-notifier/styles";
-
-
 
 
 td {
@@ -41,4 +35,14 @@ td {
     background: white;
     cursor: inherit;
     display: block;
+  }
+  .button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
   }
